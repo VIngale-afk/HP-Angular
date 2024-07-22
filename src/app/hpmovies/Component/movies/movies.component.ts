@@ -43,7 +43,7 @@ export class MoviesComponent {
   }
  
   filterByYear(releasedate: string): boolean {
-   if(this.releaseYearFilter || releasedate){
+   if(!this.releaseYearFilter || !releasedate){
      return true;
    }
    const yearFromReleaseDate= new Date(releasedate).getFullYear().toString();
