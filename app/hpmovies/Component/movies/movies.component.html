@@ -1,0 +1,41 @@
+<div class="container-fluid p-4 text-center justify-content-center">
+    <div class="row justify-content-center">
+        <div class=" col-12 justify-content-center bg-body-tertiary p-2">
+            <div class="text-start">
+                <h5>Filters</h5>
+            </div>
+            <br>
+            <div class="justify-content-around align-items-center">
+                <div class="input-group">
+                    <span class="input-group-text">Title</span>
+                    <input type="text" [(ngModel)]="titleFilter" (input)="applyFilters()" class="form-control">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-text">Release Year</span>
+                    <input type="text" [(ngModel)]="releaseYearFilter" (input)="applyFilters()" class="form-control">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="movie-card">
+        <div>
+            <ng-container *ngFor="let movie of filteredMovies">
+                <div class="row col-12 justify-content-between align-items-center">
+                    <div class="col-md-9"><h5 class="movie-card-title">{{ movie?.title }}</h5>
+                    </div>
+                    <div class="col-md-3">
+                        <button  (click)="navigateToDetails(movie?.id)">Details</button>
+                    </div>
+                    
+                </div>
+                <div class="text-start">
+                    <p>Duration: {{ movie?.duration | duration }}
+                        Budget: {{ movie?.budget | budget }}
+                        Release Date: {{ movie?.release_date }}
+                    </p>
+                </div>
+                <br>
+            </ng-container>
+        </div>        
+    </div>
+</div>
